@@ -30,6 +30,7 @@ ARCHITECTURE Behavioral OF vga_sync IS
     CONSTANT V_BP   : INTEGER := 23;
     CONSTANT V_SYNC : INTEGER := 4;
 
+    -- Change the FREQ parameter to the correct frequency of your monitor
     CONSTANT FREQ   : INTEGER := 65;
 
 BEGIN
