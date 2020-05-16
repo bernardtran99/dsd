@@ -5,11 +5,11 @@ entity eth is
     port (
         -- all ports that are connected to ethernet module
         -- some may not be used
-        clk_in : IN STD_LOGIC;
+        clk_in : in STD_LOGIC;
         ETH_MDC : out std_logic;
         ETH_MDIO : inout std_logic;
         ETH_RSTN : out std_logic;
-        ETH_CRSDV : in std_logic;--bidirectional
+        ETH_CRSDV : in std_logic;
         ETH_RXERR : in std_logic;
         ETH_RXD : in std_logic_vector (1 downto 0);
         ETH_TXEN : out std_logic;
@@ -31,8 +31,13 @@ architecture Behavioral of eth is
     
 begin
     
+    -- this is the 2 bit data packet that is going to be transmitted
+    ETH_TXD <= "01010101";
     
-    -- init clock for ETH_REFCLK
+    -- set to high to set transit enable
+    ETH_TXEN <= '1';
+    
+    -- init clock for ETH_REFCLK and ETH_MDC
     clk_wiz_0_inst : clk_wiz_0
     port map (
       clk_in1 => clk_in,
